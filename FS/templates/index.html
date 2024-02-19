@@ -1,0 +1,39 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUT Request Example</title>
+</head>
+<body>
+    <h2>Send PUT Request</h2>
+    <button id="sendRequest">Send PUT Request</button>
+
+    <script>
+        document.getElementById('sendRequest').addEventListener('click', function() {
+            const data = {
+                hostname: "fibonacci.com",
+                ip: "localhost",
+                as_ip: "localhost",
+                as_port: "53533"
+            };
+
+            fetch('/register', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
